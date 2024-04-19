@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using yoyocosmetic.Models;
 
 namespace yoyocosmetic.Data
 {
@@ -7,8 +8,19 @@ namespace yoyocosmetic.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
+
+        public DbSet<Category> Categories { get; set; }
+
     }
 
+
+
+
+
    
-    }
+
+
+
+
+}
 
