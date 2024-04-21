@@ -22,5 +22,25 @@ namespace yoyocosmetic.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult create(Category obj)
+        {
+          if(obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("name", "Name and Display Order can not be the same");
+            }
+            if (obj.Name!=null && obj.Name.ToLower() == "test")
+            {
+                ModelState.AddModelError("", "Test in an invalid value");
+            }
+
+            if (ModelState.IsValid) { 
+            _db.Categories.Add(obj);
+            _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+            
+        }
     }
 }
