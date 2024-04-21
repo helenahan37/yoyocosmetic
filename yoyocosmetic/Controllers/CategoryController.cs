@@ -17,5 +17,10 @@ namespace yoyocosmetic.Controllers
             List<Category> objCategory = _db.Categories.ToList();
             return View(objCategory);
         }
+
+        public IActionResult create()
+        {
+            return View();
+        }
     }
 }
