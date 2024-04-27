@@ -30,15 +30,17 @@ namespace yoyocosmetic.Controllers
             {
                 ModelState.AddModelError("name", "Name and Display Order can not be the same");
             }
-            if (obj.Name!=null && obj.Name.ToLower() == "test")
+          if (obj.Name !=null && obj.Name.ToLower() == "test")
             {
-                ModelState.AddModelError("", "Test in an invalid value");
-            }
+                ModelState.AddModelError("name", "Test in an invalid value");
+            }  
 
-            if (ModelState.IsValid) { 
+           if (ModelState.IsValid) { 
             _db.Categories.Add(obj);
             _db.SaveChanges();
-                return RedirectToAction("Index");
+            TempData["success"] = "Category created successfully";
+
+            return RedirectToAction("Index");
             }
             return View();
             
@@ -61,11 +63,20 @@ namespace yoyocosmetic.Controllers
         [HttpPost]
         public IActionResult Edit(Category obj)
         {
-           
+            if (obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("name", "Name and Display Order can not be the same");
+            }
+            if (obj.Name != null && obj.Name.ToLower() == "test")
+            {
+                ModelState.AddModelError("name", "Test in an invalid value");
+            }
+
             if (ModelState.IsValid)
             {
                 _db.Categories.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index");
             }
             return View();
@@ -96,9 +107,9 @@ namespace yoyocosmetic.Controllers
             }
             _db.Categories.Remove(obj);
 
-             _db.SaveChanges();
-             return RedirectToAction("Index");
-
+            _db.SaveChanges();
+            TempData["success"] = "Category deleted successfully";
+            return RedirectToAction("Index");
 
         }
     }
