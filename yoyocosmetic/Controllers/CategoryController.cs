@@ -18,12 +18,13 @@ namespace yoyocosmetic.Controllers
             return View(objCategory);
         }
 
-        public IActionResult create()
+        //Create
+        public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult create(Category obj)
+        public IActionResult Create(Category obj)
         {
           if(obj.Name == obj.DisplayOrder.ToString())
             {
@@ -43,6 +44,7 @@ namespace yoyocosmetic.Controllers
             
         }
 
+        //Edit
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0)
@@ -67,6 +69,36 @@ namespace yoyocosmetic.Controllers
                 return RedirectToAction("Index");
             }
             return View();
+
+        }
+
+        //Delete
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            Category categoryFromDb = _db.Categories.Find(id);
+            if (categoryFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(categoryFromDb);
+        }
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePOST(int? id)
+        {
+            Category? obj = _db.Categories.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _db.Categories.Remove(obj);
+
+             _db.SaveChanges();
+             return RedirectToAction("Index");
+
 
         }
     }
