@@ -1,0 +1,41 @@
+﻿@page
+@model yoyocosmeRazor_Temp.Pages.Categories.DeleteModel
+
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-primary bg-gradient ml-0 py-1">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Delete Category</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <form method="post" class="row">
+            <input asp-for="Category.Id" hidden />
+            <div class="border  rounded p-3 col-12">
+                <label asp-for="Category.Name" class="ms-2"></label>
+                <div class=" py-2">
+                    <input asp-for="Category.Name" disabled class="form-control border-0 shadow-none" style="background-color: #f0f0f0;" />
+                </div>
+                <label asp-for="Category.DisplayOrder" class="ms-2 "></label>
+                <div class=" py-2">
+                    <input asp-for="Category.DisplayOrder" disabled class="form-control border-0 shadow-none" style="background-color: #f0f0f0;" />
+                </div>
+
+                <div class="row pt-2">
+                    <div class="col-6 col-md-3">
+                        <button type="submit" class="btn btn-primary form-control">Delete</button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <a asp-page="/categories/index"  class="btn btn-outline-dark form-control">
+                            Back to List
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
