@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using yoyocosmetic.Data;
+using yoyocosmetic.DataAccess.Data;
 using yoyocosmetic.Models;
 
 namespace yoyocosmetic.Controllers

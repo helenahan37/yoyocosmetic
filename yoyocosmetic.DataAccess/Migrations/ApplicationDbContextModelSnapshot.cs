@@ -7,7 +7,7 @@ using yoyocosmetic.DataAccess.Data;
 
 #nullable disable
 
-namespace yoyocosmetic.Migrations
+namespace yoyocosmetic.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -34,11 +34,12 @@ namespace yoyocosmetic.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
