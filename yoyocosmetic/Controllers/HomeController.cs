@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using yoyocosmetic.Models;
 
+
 namespace yoyocosmetic.Controllers
 {
     public class HomeController : Controller

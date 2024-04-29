@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using yoyocosmetic.Models;
 
-namespace yoyocosmetic.Data
+namespace yoyocosmetic.DataAccess.Data
 {
     public class ApplicationDbContext :DbContext
     {

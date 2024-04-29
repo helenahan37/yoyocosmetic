@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using yoyocosmetic.Data;
+using yoyocosmetic.DataAccess.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
